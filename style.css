@@ -1,0 +1,382 @@
+/* --- ГЛОБАЛЬНЫЕ СТИЛИ И СБРОСЫ --- */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+html::-webkit-scrollbar {
+    display: none;
+}
+
+body {
+    font-family: sans-serif;
+    margin: 0;
+    background-color: #212121;
+    color: #f4f4f4;      
+}
+
+/* --- СТИЛИ ГЛАВНОЙ СТРАНИЦЫ (INDEX.HTML) --- */
+
+#hero {
+    position: relative;
+    height: 100vh;
+    background-image: url('img/main.jpg');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    border-radius: 0 0 125px 125px;
+    overflow: hidden;
+}
+
+#hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 0 0 125px 125px;
+}
+
+.hero-content {
+    position: relative;
+    max-width: 800px;
+    padding: 20px;
+}
+
+.hero-content h1 {
+    font-size: 3.5em;
+    margin-top: 0;
+    margin-bottom: 0.5em;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+}
+
+.hero-content p {
+    font-size: 1.2em;
+    margin-bottom: 1.5em;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
+}
+
+/* Группируем все полноэкранные блоки */
+#benefits-screen,
+#directions-screen,
+#how-to-start-screen {
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 20px;
+}
+
+.content-box {
+    max-width: 800px;
+    padding: 30px 50px;
+    background: #333333;
+    border-radius: 12px;
+    color: #f4f4f4;
+    text-align: left;
+}
+
+.content-box h2 {
+    font-size: 2em;
+    text-align: center;
+    margin-top: 0;
+}
+
+.content-box p {
+    font-size: 1.1em;
+    line-height: 1.6;
+}
+
+/* Стили для списка направлений */
+.content-box ul {
+    padding-left: 20px;
+    list-style-type: square;
+}
+
+.content-box li {
+    font-size: 1.1em;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+
+.tiles-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    max-width: 900px;
+    width: 100%;
+}
+
+.tile {
+    background: #333;
+    padding: 25px;
+    border-radius: 12px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.info-tile {
+    grid-column: 1 / -1;
+    text-align: center;
+}
+
+.info-tile-small {
+    text-align: center;
+    justify-content: center;
+}
+
+.link-tile {
+    text-decoration: none;
+    color: white;
+    align-items: center;
+    text-align: center;
+}
+
+.link-tile:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.link-tile img {
+    max-height: 40px;
+    margin-bottom: 15px;
+}
+
+.link-tile span {
+    margin-top: auto;
+    font-weight: bold;
+    padding-top: 15px;
+}
+
+.dobro {
+    background-color: #00A6B5;
+}
+
+.kait {
+    background-color: #2c3e50;
+}
+
+.kait img {
+    max-height: 50px;
+}
+
+.quiz-tile {
+    background-color: #007BFF;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #333;
+    color: white;
+}
+
+/* --- СТИЛИ СТРАНИЦЫ ТЕСТА (QUIZ.HTML) --- */
+
+/* НОВЫЙ СТИЛЬ ДЛЯ ОБЩЕЙ ОБЕРТКИ */
+.quiz-wrapper {
+    max-width: 700px;
+    margin: 40px auto; /* Центрирует весь блок по горизонтали */
+}
+
+.quiz-wrapper header {
+    text-align: center;
+    margin-bottom: 20px; /* Отступ от заголовка до блока с тестом */
+}
+
+/* Убираем лишний margin у контейнеров, так как теперь их позицией управляет quiz-wrapper */
+#start-container, #quiz-container, #results {
+    padding: 30px;
+    background-color: #333;
+    border-radius: 12px;
+}
+
+#start-container {
+    text-align: center;
+}
+
+#start-container input[type="text"] {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #555;
+    background-color: #212121;
+    color: #f4f4f4;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+#start-container input[type="text"]:focus {
+    outline: none;
+    border-color: #00A6B5;
+    box-shadow: 0 0 0 3px rgba(0, 166, 181, 0.2);
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+#question-area {
+    transition: opacity 0.4s ease-in-out;
+    min-height: 150px;
+}
+
+.fade-out {
+    opacity: 0;
+}
+
+#progress {
+    font-size: 1.1em;
+    color: #aaa;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.question {
+    font-size: 1.2em;
+    margin-bottom: 25px;
+    font-weight: bold;
+    line-height: 1.4;
+}
+
+/* СТИЛИ ДЛЯ ВАРИАНТОВ ОТВЕТОВ */
+.answers label {
+    display: block;
+    background: #424242;
+    padding: 15px 20px;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s;
+    border: 1px solid transparent;
+    position: relative;
+    padding-left: 50px; 
+}
+
+.answers label:hover {
+    background: #555;
+}
+
+.answers input[type="radio"] {
+    display: none; 
+}
+
+.answers label::before {
+    content: '';
+    display: block;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #aaa;
+    border-radius: 50%;
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: border-color 0.3s;
+}
+
+.answers label::after {
+    content: '';
+    display: none; 
+    width: 10px;
+    height: 10px;
+    background: #00A6B5;
+    border-radius: 50%;
+    position: absolute;
+    left: 21.5px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.answers input[type="radio"]:checked + label {
+    border-color: #00A6B5;
+    background-color: #2c3e50;
+}
+.answers input[type="radio"]:checked + label::before {
+    border-color: #00A6B5;
+}
+.answers input[type="radio"]:checked + label::after {
+    display: block;
+}
+
+.validation-warning {
+    color: #d93025;
+    margin-top: 15px;
+    min-height: 22px;
+    font-weight: bold;
+}
+
+/* --- ОБЩИЕ СТИЛИ (Кнопки и т.д.) --- */
+.button {
+    display: inline-block;
+    color: white;
+    padding: 12px 25px;
+    text-decoration: none;
+    font-size: 1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 50px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+.button:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: translateY(-2px);
+}
+.button-large {
+    padding: 15px 35px;
+    font-size: 1.2em;
+}
+
+/* --- АДАПТИВНОСТЬ ДЛЯ МОБИЛЬНЫХ УСТРОЙСТВ --- */
+@media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 2.5em;
+        line-height: 1.2;
+    }
+
+    .content-box h2 {
+        font-size: 1.8em;
+    }
+
+    #hero, #hero::before {
+        border-radius: 0 0 80px 80px;
+    }
+
+    .content-box {
+        padding: 25px 20px;
+    }
+    
+    .quiz-wrapper {
+        margin: 20px 10px;
+    }
+
+    #start-container, #quiz-container, #results {
+        padding: 20px;
+    }
+
+    .tiles-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .tile {
+        padding: 30px 20px;
+    }
+}
