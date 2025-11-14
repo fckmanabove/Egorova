@@ -1,10 +1,7 @@
 (function() {
-    // === НАСТРОЙКИ ТЕСТА ===
-
-    const TELEGRAM_BOT_TOKEN = '8253147193:AAF7t_o1NrFG2qfiqTN5SeJCeWAXL_f51SY'; // Ваш токен
+    const TELEGRAM_BOT_TOKEN = '8253147193:AAF7t_o1NrFG2qfiqTN5SeJCeWAXL_f51SY';
     const TELEGRAM_CHAT_IDS = ['8138596496', '6631712956'];
 
-    // 20 вопросов для анкеты волонтера
     const myQuestions = [
         
         {
@@ -189,27 +186,22 @@
         }
     ];
 
-    // === ЛОГИКА РАБОТЫ САЙТА ===
-
     let currentQuestionIndex = 0;
     const userAnswers = [];
     let userFirstName = '';
     let userLastName = '';
-    let userContact = ''; // Новая переменная для контактов
+    let userContact = '';
 
-    // DOM-элементы стартового экрана
     const startContainer = document.getElementById('start-container');
     const quizContainer = document.getElementById('quiz-container');
     const resultsContainer = document.getElementById('results');
 
-    // DOM-элементы полей ввода
     const firstNameInput = document.getElementById('first-name');
     const lastNameInput = document.getElementById('last-name');
-    const contactInput = document.getElementById('contact-info'); // Новое поле
+    const contactInput = document.getElementById('contact-info');
     const startButton = document.getElementById('start-btn');
     const nameValidationWarning = document.getElementById('name-validation-warning');
     
-    // DOM-элементы экрана теста
     const questionArea = document.getElementById('question-area');
     const nextButton = document.getElementById('next-btn');
     const progressContainer = document.getElementById('progress');
@@ -218,16 +210,15 @@
     function startQuiz() {
         const firstName = firstNameInput.value.trim();
         const lastName = lastNameInput.value.trim();
-        const contact = contactInput.value.trim(); // Получаем значение нового поля
+        const contact = contactInput.value.trim();
 
-        // Обновленная валидация
         if (firstName === '' || lastName === '' || contact === '') {
             nameValidationWarning.textContent = 'Пожалуйста, заполните все поля.';
             return;
         }
         userFirstName = firstName;
         userLastName = lastName;
-        userContact = contact; // Сохраняем контакт
+        userContact = contact;
 
         startContainer.style.display = 'none';
         quizContainer.style.display = 'block';
@@ -237,7 +228,6 @@
     function showQuestion(index) {
         const questionData = myQuestions[index];
         const answers = [];
-        // ВАЖНО: Мы используем id для label, чтобы связать их с input
         let answerIndex = 0;
         for (const letter in questionData.answers) {
             const answerId = `q${index}_${letter}`;
@@ -281,7 +271,6 @@
         resultsContainer.style.display = 'block';
         resultsContainer.innerHTML = `<h2>${userFirstName}, спасибо за ваши ответы!</h2><p>Результаты были отправлены координатору. Мы свяжемся с вами в ближайшее время.</p>`;
 
-        // Добавляем контактные данные в сообщение
         let messageForTelegram = `<b>Тест прошел(а): ${userFirstName} ${userLastName}</b>\n`;
         messageForTelegram += `<b>Контакт: ${userContact}</b>\n\n`;
         messageForTelegram += `<b>Результаты:</b>\n\n`;
@@ -313,15 +302,12 @@
         }
     }
 
-    // НОВАЯ ФУНКЦИЯ ДЛЯ ОБРАБОТКИ НАЖАТИЙ КЛАВИАТУРЫ
     function handleKeyPress(event) {
-        // Если открыт стартовый экран и нажат Enter
         if (startContainer.style.display !== 'none' && event.key === 'Enter') {
             startQuiz();
             return;
         }
 
-        // Если открыт экран теста
         if (quizContainer.style.display !== 'none') {
             switch (event.key) {
                 case '1':
@@ -341,9 +327,8 @@
         }
     }
 
-    // === ЗАПУСК ===
     startButton.addEventListener('click', startQuiz);
     nextButton.addEventListener('click', handleNextButtonClick);
-    document.addEventListener('keydown', handleKeyPress); // Добавляем слушатель событий клавиатуры
+    document.addEventListener('keydown', handleKeyPress);
 
 })();

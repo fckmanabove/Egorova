@@ -8,13 +8,11 @@
 </head>
 <body>
 
-    <!-- НОВЫЙ ОБЩИЙ КОНТЕЙНЕР -->
     <div class="quiz-wrapper">
         <header>
             <h1>Тест для волонтеров</h1>
         </header>
         <main>
-            <!-- СТАРТОВЫЙ ЭКРАН (виден по умолчанию) -->
             <div id="start-container">
                 <h2>Добро пожаловать!</h2>
                 <p>Прежде чем начать, пожалуйста, представьтесь.</p>
@@ -31,23 +29,18 @@
                 <div id="name-validation-warning" class="validation-warning"></div>
             </div>
 
-            <!-- ОСНОВНОЙ БЛОК ТЕСТА (скрыт по умолчанию) -->
             <div id="quiz-container" style="display: none;">
                 <div id="progress"></div>
                 <div id="question-area">
-                    <!-- Контент генерируется через JS -->
                 </div>
                 <button id="next-btn" class="button">Ответить</button>
                 <div id="validation-warning" class="validation-warning"></div>
             </div>
 
-            <!-- ЭКРАН РЕЗУЛЬТАТОВ (скрыт по умолчанию) -->
             <div id="results" style="display: none;">
-                <!-- Сюда будет выведено сообщение благодарности -->
             </div>
         </main>
     </div> 
-    <!-- КОНЕЦ ОБЩЕГО КОНТЕЙНЕРА -->
 
     <script src="quiz.js"></script>
 </body>

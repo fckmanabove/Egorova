@@ -1,5 +1,3 @@
-/* --- ГЛОБАЛЬНЫЕ СТИЛИ И СБРОСЫ --- */
-
 * {
     box-sizing: border-box;
 }
@@ -18,8 +16,6 @@ body {
     background-color: #212121;
     color: #f4f4f4;      
 }
-
-/* --- СТИЛИ ГЛАВНОЙ СТРАНИЦЫ (INDEX.HTML) --- */
 
 #hero {
     position: relative;
@@ -67,7 +63,6 @@ body {
     text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
 }
 
-/* Группируем все полноэкранные блоки */
 #benefits-screen,
 #directions-screen,
 #how-to-start-screen {
@@ -98,7 +93,6 @@ body {
     line-height: 1.6;
 }
 
-/* Стили для списка направлений */
 .content-box ul {
     padding-left: 20px;
     list-style-type: square;
@@ -109,7 +103,6 @@ body {
     line-height: 1.6;
     margin-bottom: 15px;
 }
-
 
 .tiles-grid {
     display: grid;
@@ -184,20 +177,16 @@ footer {
     color: white;
 }
 
-/* --- СТИЛИ СТРАНИЦЫ ТЕСТА (QUIZ.HTML) --- */
-
-/* НОВЫЙ СТИЛЬ ДЛЯ ОБЩЕЙ ОБЕРТКИ */
 .quiz-wrapper {
     max-width: 700px;
-    margin: 40px auto; /* Центрирует весь блок по горизонтали */
+    margin: 40px auto;
 }
 
 .quiz-wrapper header {
     text-align: center;
-    margin-bottom: 20px; /* Отступ от заголовка до блока с тестом */
+    margin-bottom: 20px;
 }
 
-/* Убираем лишний margin у контейнеров, так как теперь их позицией управляет quiz-wrapper */
 #start-container, #quiz-container, #results {
     padding: 30px;
     background-color: #333;
@@ -252,7 +241,6 @@ footer {
     line-height: 1.4;
 }
 
-/* СТИЛИ ДЛЯ ВАРИАНТОВ ОТВЕТОВ */
 .answers label {
     display: block;
     background: #424242;
@@ -319,7 +307,6 @@ footer {
     font-weight: bold;
 }
 
-/* --- ОБЩИЕ СТИЛИ (Кнопки и т.д.) --- */
 .button {
     display: inline-block;
     color: white;
@@ -345,7 +332,6 @@ footer {
     font-size: 1.2em;
 }
 
-/* --- АДАПТИВНОСТЬ ДЛЯ МОБИЛЬНЫХ УСТРОЙСТВ --- */
 @media (max-width: 768px) {
     .hero-content h1 {
         font-size: 2.5em;
